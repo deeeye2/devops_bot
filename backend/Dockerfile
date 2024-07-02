@@ -13,8 +13,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Ensure gunicorn is installed
 RUN pip install gunicorn
 
-# Make port 80 available to the world outside this container
-EXPOSE 80
+# Make port 5000 available to the world outside this container
+EXPOSE 5000
 
 # Run gunicorn server
-CMD ["gunicorn", "-w", "3", "-b", "0.0.0.0:80", "app:app"]
+CMD ["gunicorn", "-w", "3", "-b", "0.0.0.0:5000", "app:app"]
