@@ -10,7 +10,7 @@ spec:
         image: python:3.8-slim
         command: ["sh", "-c"]
         args:
-          - apk add --no-cache curl && 
+          - apt-get update && apt-get install -y curl && 
             curl -LO https://bootstrap.pypa.io/get-pip.py && 
             python get-pip.py && 
             pip install requests && 
