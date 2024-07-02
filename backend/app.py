@@ -7,10 +7,8 @@ def login():
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
-    app.logger.debug(f"Received login request with username: {username} and password: {password}")
     if username == 'admin' and password == 'admin':
         return jsonify({"message": "Welcome to DevOps Bot"}), 200
-    app.logger.debug(f"Invalid credentials: {username}/{password}")
     return jsonify({"message": "Invalid Credentials"}), 401
 
 if __name__ == '__main__':
