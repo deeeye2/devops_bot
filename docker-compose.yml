@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: devops-bot-backend
+    ports:
+      - "5001:5000"
+    networks:
+      - devops-bot-network
+
+  ui:
+    build: ./ui
+    container_name: devops-bot-ui
+    ports:
+      - "5000:5000"
+    networks:
+      - devops-bot-network
+    depends_on:
+      - backend
+
+networks:
+  devops-bot-network:
+    driver: bridge
