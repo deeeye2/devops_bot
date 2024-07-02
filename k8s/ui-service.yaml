@@ -1,4 +1,3 @@
-# k8s/ui-service.yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -8,8 +7,7 @@ spec:
   selector:
     app: devops-bot-ui
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
-      nodePort: 30080  # You can specify a port in the range 30000-32767
-
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+    nodePort: 30080
