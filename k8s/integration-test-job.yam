@@ -1,0 +1,30 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: integration-test-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: integration-test
+        image: python:3.8-slim
+        command: ["sh", "-c"]
+        args:
+          - apk add --no-cache curl && 
+            curl -LO https://bootstrap.pypa.io/get-pip.py && 
+            python get-pip.py && 
+            pip install requests && 
+            echo '
+import requests
+
+def test_backend():
+    response = requests.post("http://devops-bot-backend-service:5000/login", json={"username": "admin", "password": "admin"})
+    assert response.status_code == 200
+    assert response.json().get("message") == "Welcome to DevOps Bot"
+
+if __name__ == "__main__":
+    test_backend()
+' > test_integration.py && 
+            python test_integration.py
+      restartPolicy: Never
+  backoffLimit: 4
