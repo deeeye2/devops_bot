@@ -11,7 +11,7 @@ def home():
 def login():
     username = request.form['username']
     password = request.form['password']
-    response = requests.post('http://backend:5000/login', json={'username': username, 'password': password})
+    response = requests.post('http://devops-bot-backend-service:5000/login', json={'username': username, 'password': password})
     if response.status_code == 200:
         return redirect(url_for('welcome'))
     return 'Invalid Credentials'
