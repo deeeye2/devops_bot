@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-bot-ui-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devops-bot-ui
+  template:
+    metadata:
+      labels:
+        app: devops-bot-ui
+    spec:
+      containers:
+      - name: devops-bot-ui
+        image: deeeye2/devops-bot-ui:latest
+        ports:
+        - containerPort: 5000
