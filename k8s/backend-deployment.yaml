@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-bot-backend-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devops-bot-backend
+  template:
+    metadata:
+      labels:
+        app: devops-bot-backend
+    spec:
+      containers:
+      - name: devops-bot-backend
+        image: deeeye2/devops-bot-backend:latest
+        ports:
+        - containerPort: 5000
