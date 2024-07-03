@@ -13,7 +13,15 @@ spec:
         app: devops-bot-backend
     spec:
       containers:
-      - name: devops-bot-backend
-        image: deeeye2/devops-bot-backend-v1:latest
+      - name: backend
+        image: devops-bot-backend:latest
         ports:
         - containerPort: 5000
+        volumeMounts:
+        - mountPath: /app/database
+          name: database-storage
+      volumes:
+      - name: database-storage
+        persistentVolumeClaim:
+          claimName: database-pvc
+
