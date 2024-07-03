@@ -3,9 +3,9 @@ kind: Service
 metadata:
   name: devops-bot-backend-service
 spec:
-  type: ClusterIP
-  ports:
-    - port: 5000
-      targetPort: 5000
   selector:
     app: devops-bot-backend
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
