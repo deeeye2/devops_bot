@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: init-db-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: init-db
+        image: devops-bot-backend:latest
+        command: ["python3", "-c", "from app import db, app; with app.app_context(): db.create_all()"]
+        volumeMounts:
+        - mountPath: /app/database
+          name: database-storage
+      restartPolicy: OnFailure
+      volumes:
+      - name: database-storage
+        persistentVolumeClaim:
+          claimName: database-pvc
