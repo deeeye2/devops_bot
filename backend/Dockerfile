@@ -6,7 +6,7 @@ COPY . /app
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-RUN python -c "from app import db, app; with app.app_context(): db.create_all()"
+RUN python -c "from app import db, app; app.app_context().push(); db.create_all()"
 
 EXPOSE 5000
 
