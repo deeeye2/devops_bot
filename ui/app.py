@@ -4,7 +4,7 @@ import requests
 app = Flask(__name__)
 
 # Backend service URL
-backend_url = 'http://devops-bot-backend-service:5000/api'
+backend_url = 'http://devops-bot-backend-service:5000'
 
 @app.route('/')
 def home():
@@ -17,7 +17,7 @@ def login():
             'username': request.form['username'],
             'password': request.form['password']
         }
-        response = requests.post(f'{backend_url}/login', json=data)
+        response = requests.post(f'{backend_url}/api/login', json=data)
         if response.status_code == 200:
             return redirect('/dashboard')
         else:
@@ -31,7 +31,7 @@ def register():
             'username': request.form['username'],
             'password': request.form['password']
         }
-        response = requests.post(f'{backend_url}/register', json=data)
+        response = requests.post(f'{backend_url}/api/register', json=data)
         if response.status_code == 201:
             return redirect('/login')
         else:
