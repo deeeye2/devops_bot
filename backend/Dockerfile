@@ -13,11 +13,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the current directory contents into the container at /app
 COPY . .
 
-# Make the init_db.sh script executable
-RUN chmod +x init_db.sh
-
-# Run the init_db.sh script to initialize the database
-RUN ./init_db.sh
+# Run the init_db.py script to initialize the database
+RUN python init_db.py
 
 # Make port 5000 available to the world outside this container
 EXPOSE 5000
