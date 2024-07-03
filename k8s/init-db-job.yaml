@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
       - name: init-db
-        image: devops-bot-backend-v1:latest
+        image: deeeye2/devops-bot-backend-v1:latest
         command: ["python3", "-c", "from app import db, app; with app.app_context(): db.create_all()"]
         volumeMounts:
         - mountPath: /app/database
