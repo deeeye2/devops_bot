@@ -8,15 +8,4 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: /mnt/data/database
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: database-pvc
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
+    path: "/mnt/docker/database"
