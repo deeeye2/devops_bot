@@ -17,4 +17,3 @@ spec:
         image: deeeye2/devops-bot-ui:latest
         ports:
         - containerPort: 80
-        command: ["gunicorn", "-w", "3", "-b", "0.0.0.0:80", "app:app"]
