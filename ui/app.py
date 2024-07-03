@@ -3,6 +3,9 @@ import requests
 
 app = Flask(__name__)
 
+# Backend service URL
+backend_url = 'http://backend-service:5000'
+
 @app.route('/')
 def home():
     return render_template('home.html')
@@ -10,31 +13,32 @@ def home():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        response = requests.post('http://devops-bot-backend-service:5000/login', json={'username': username, 'password': password})
+        data = {
+            'username': request.form['username'],
+            'password': request.form['password']
+        }
+        response = requests.post(f'{backend_url}/login', json=data)
         if response.status_code == 200:
-            return redirect(url_for('dashboard'))
-        else:
-            return 'Invalid Credentials'
+            return redirect('/dashboard')
     return render_template('login.html')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        response = requests.post('http://devops-bot-backend-service:5000/register', json={'username': username, 'password': password})
-        if response.status_code == 200:
-            return redirect(url_for('login'))
-        else:
-            return 'Registration Failed'
+        data = {
+            'username': request.form['username'],
+            'password': request.form['password']
+        }
+        response = requests.post(f'{backend_url}/register', json=data)
+        if response.status_code == 201:
+            return redirect('/login')
     return render_template('register.html')
 
 @app.route('/dashboard')
 def dashboard():
-    return 'Welcome to the Dashboard'
+    return render_template('dashboard.html')
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
+
 
