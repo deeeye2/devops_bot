@@ -26,7 +26,7 @@ spec:
       - name: devops-bot-ui
         image: deeeye2/devops-bot-ui:latest
         ports:
-        - containerPort: 80
+        - containerPort: 5000  # This should match the actual port the UI listens on
         env:
         - name: BACKEND_URL
           value: "http://localhost:5001"
