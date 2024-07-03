@@ -6,8 +6,14 @@ COPY . /app
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Run the database initialization command
-RUN python3 -c 'from app import db, app; with app.app_context(): db.create_all()'
+# Copy the database initialization script
+COPY init_db.sh /app/init_db.sh
+
+# Make the script executable
+RUN chmod +x /app/init_db.sh
+
+# Run the database initialization script
+RUN /app/init_db.sh
 
 EXPOSE 5000
 
