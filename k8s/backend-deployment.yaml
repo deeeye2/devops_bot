@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: devops-bot-backend-va:latest
+        image: devops-bot-backend-v1:latest
         ports:
         - containerPort: 5000
         volumeMounts:
