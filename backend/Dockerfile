@@ -6,10 +6,8 @@ COPY . /app
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the database initialization script
+# Copy the database initialization script and make it executable
 COPY init_db.sh /app/init_db.sh
-
-# Make the script executable
 RUN chmod +x /app/init_db.sh
 
 # Run the database initialization script
