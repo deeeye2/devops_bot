@@ -20,7 +20,7 @@ RUN chmod +x init_db.sh
 RUN ./init_db.sh
 
 # Make port 5000 available to the world outside this container
-EXPOSE 5000
+EXPOSE 5001
 
 # Define environment variable
 ENV NAME World
