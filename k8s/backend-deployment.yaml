@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: devops-bot-backend
-        image: deeeye2/devops-bot-backend-v1
+        image: deeeye2/devops-bot-backend-v1:latest
         ports:
         - containerPort: 5000
