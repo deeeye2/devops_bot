@@ -16,11 +16,12 @@ COPY templates /app/templates
 # Copy the static directory to /app/static
 COPY static /app/static
 
-# Make port 5000 available to the world outside this container
-EXPOSE 5000
+# Make port 80 available to the world outside this container
+EXPOSE 80
 
 # Define environment variable
 ENV NAME World
 
 # Run app.py when the container launches
-CMD ["gunicorn", "-b", "0.0.0.0:5000", "app:app"]
+CMD ["gunicorn", "-b", "0.0.0.0:80", "app:app"]
+
