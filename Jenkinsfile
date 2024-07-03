@@ -4,13 +4,13 @@ pipeline {
         DOCKER_CREDENTIALS_ID = 'docker_hub_login'
         DOCKER_IMAGE_BACKEND = 'deeeye2/devops-bot-backend-v1:latest'
         DOCKER_IMAGE_UI = 'deeeye2/devops-bot-ui:latest'
-        SSH_SERVER_NAME = 'kubeconfig' // Ensure this matches the name defined in your Jenkins Publish Over SSH plugin
-        DOCKER_CMD = '/usr/bin/docker' // Update this path to the correct path of the Docker executable on your Jenkins slave
+        SSH_SERVER_NAME = 'kubeconfig'
+        DOCKER_CMD = '/usr/bin/docker'
     }
     stages {
         stage('Cleanup Workspace') {
             steps {
-                deleteDir() // Clean the workspace
+                deleteDir()
             }
         }
         stage('Cleanup Docker Images') {
